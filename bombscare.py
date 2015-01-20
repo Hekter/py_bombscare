@@ -53,6 +53,8 @@ clock = pygame.time.Clock()
 player_instance.rect.x = (7 * themeloader.block_size)
 player_instance.rect.y = (10 * themeloader.block_size)
 
+x_speed = 0
+
 # WE'RE NOT DONE YET
 done = False
 
@@ -70,25 +72,19 @@ while done == False:
                 x_speed = -16
             if event.key == pygame.K_RIGHT:
                 x_speed = 16
-            if event.key == pygame.K_UP:
-                y_speed = -16
-            if event.key == pygame.K_DOWN:
-                y_speed = 16
 
         if event.type == pygame.KEYUP:
             if event.key == pygame.K_LEFT:
                 x_speed = 0
             if event.key == pygame.K_RIGHT:
                 x_speed = 0
-            if event.key == pygame.K_UP:
-                y_speed = 0
-            if event.key == pygame.K_DOWN:
-                y_speed = 0
             if event.key == pygame.K_ESCAPE:
                 done = True
 
     # Start game logic.
     bomb_list.update()
+
+    player_instance.rect.x += x_speed
 
     # This runs the spritecollide() function inside pygame to figure out if we've hit a bomb! Easy peasy.
     # Returns a list of collided sprites. In this case, that we've hit a bomb.
