@@ -20,6 +20,9 @@ class Bomb(pygame.sprite.Sprite):
     def update(self):
         self.rect.y += themeloader.block_size
 
+        if self.rect.y > (themeloader.block_size * 12):
+            self.rect.y = -16
+
 class BlackBomb(Bomb):
     """
     Class for regular black bombs that go boom!

@@ -25,7 +25,6 @@ SCREEN_HEIGHT = 11 * themeloader.block_size
 
 # Now we divvy up the screen width in to sixteen-pixel-long pieces because that's how big the bombs are.
 SCREEN_WIDTH_BLOCKS = SCREEN_WIDTH // themeloader.block_size
-print(type(SCREEN_WIDTH_BLOCKS))
 
 # Initializes the screen.
 screen = pygame.display.set_mode([SCREEN_WIDTH, SCREEN_HEIGHT])
@@ -107,7 +106,7 @@ while done == False:
     all_sprites_list.draw(screen)
 
     # Do a "tick" forward in time, up to sixty times in a second.
-    clock.tick(60)
+    clock.tick(5)
 
     # Flip the display over so that it can be seen by the player.
     pygame.display.flip()
