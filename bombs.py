@@ -1,5 +1,6 @@
 import pygame
 import themeloader
+import random
 
 class Bomb(pygame.sprite.Sprite):
     """
@@ -17,11 +18,17 @@ class Bomb(pygame.sprite.Sprite):
         # Get the hitbox(?)
         self.rect = self.image.get_rect()
 
+    # Resets the position to a random x and y above the board, determined by the theme blocksize.
+    def reset_position(self):
+        self.rect.x = random.randrange(0, themeloader.SCREEN_WIDTH_BLOCKS) * themeloader.block_size
+        self.rect.y = random.randrange(-(themeloader.block_size * 5), 0, 16)
+
     def update(self):
         self.rect.y += themeloader.block_size
 
         if self.rect.y > (themeloader.block_size * 12):
-            self.rect.y = -16
+            # self.rect.y = -16
+            self.reset_position()
 
 class BlackBomb(Bomb):
     """

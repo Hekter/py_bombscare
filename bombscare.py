@@ -23,9 +23,6 @@ all_sprites_list = pygame.sprite.Group()
 SCREEN_WIDTH = 15 * themeloader.block_size
 SCREEN_HEIGHT = 11 * themeloader.block_size
 
-# Now we divvy up the screen width in to sixteen-pixel-long pieces because that's how big the bombs are.
-SCREEN_WIDTH_BLOCKS = SCREEN_WIDTH // themeloader.block_size
-
 # Initializes the screen.
 screen = pygame.display.set_mode([SCREEN_WIDTH, SCREEN_HEIGHT])
 
@@ -35,9 +32,7 @@ for i in range(5):
     bomb = bombs.BlackBomb(themeloader.BLACK_BOMB_IMAGE)
 
     # Now we are generating a random location for the bomb to "spawn" in above the board.
-    # Board is divided into "blocks" set by the theme.
-    bomb.rect.x = random.randrange(0, SCREEN_WIDTH_BLOCKS) * themeloader.block_size
-    bomb.rect.y = random.randrange(-(themeloader.block_size * 5), 0, 16)
+    bomb.reset_position()
 
     # Add them to our sprite groups!
     bomb_list.add(bomb)
