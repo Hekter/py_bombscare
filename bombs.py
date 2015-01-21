@@ -42,3 +42,15 @@ class BlackBomb(Bomb):
 
         self.does_explode = True
         self.does_score = True
+
+class RedBomb(Bomb):
+    """
+    Class for the red, screen-clearing bomb!
+    """
+
+    def __init__(self, image_handle):
+        super().__init__(image_handle)
+
+        self.does_explode = False
+        self.type = "Red"
+        self.does_score = False

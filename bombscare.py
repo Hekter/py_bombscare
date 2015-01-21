@@ -1,7 +1,5 @@
 # Things wouldn't be possible without the glorious and beautiful pygame.
 import pygame
-# For.. random.
-import random
 
 # Custom imports!
 # Import the bombs class file for bombs.
@@ -26,6 +24,7 @@ SCREEN_HEIGHT = 11 * themeloader.block_size
 # Initializes the screen.
 screen = pygame.display.set_mode([SCREEN_WIDTH, SCREEN_HEIGHT])
 
+# Create 5 black bombs.
 for i in range(5):
 
     # Initialize a BlackBomb class as bomb and pass it the handle to the image.
@@ -37,6 +36,12 @@ for i in range(5):
     # Add them to our sprite groups!
     bomb_list.add(bomb)
     all_sprites_list.add(bomb)
+
+# Create red bomb!
+bomb = bombs.RedBomb(themeloader.RED_BOMB_IMAGE)
+bomb.reset_position()
+bomb_list.add(bomb)
+all_sprites_list.add(bomb)
 
 player_instance = player.Player(themeloader.PLAYER_IMAGE)
 all_sprites_list.add(player_instance)
@@ -90,6 +95,10 @@ while done == False:
         if bomb.does_explode == True:
             print("GAME OVER, YOU LOSE!")
             done = True
+        else:
+            if bomb.type == "Red":
+                for bomb in bomb_list:
+                    bomb.reset_position()
 
     # Drawing commands!
     screen.fill(WHITE)
