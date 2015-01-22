@@ -73,13 +73,13 @@ while done == False:
             if event.key == pygame.K_RIGHT:
                 x_speed = 16
 
-        if event.type == pygame.KEYUP:
-            if event.key == pygame.K_LEFT:
-                x_speed = 0
-            if event.key == pygame.K_RIGHT:
-                x_speed = 0
-            if event.key == pygame.K_ESCAPE:
-                done = True
+        # if event.type == pygame.KEYUP:
+        #     if event.key == pygame.K_LEFT:
+        #         x_speed = 0
+        #     if event.key == pygame.K_RIGHT:
+        #         x_speed = 0
+        #     if event.key == pygame.K_ESCAPE:
+        #         done = True
 
     # Start game logic.
     bomb_list.update()
@@ -106,9 +106,12 @@ while done == False:
     all_sprites_list.draw(screen)
 
     # Do a "tick" forward in time, up to sixty times in a second.
-    clock.tick(5)
+    clock.tick(60)
 
     # Flip the display over so that it can be seen by the player.
     pygame.display.flip()
+
+    # At the end of the loop, set the speed of x to 0 to prevent really fast "skidding"
+    x_speed = 0
 
 pygame.quit()

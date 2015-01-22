@@ -24,7 +24,8 @@ class Bomb(pygame.sprite.Sprite):
         self.rect.y = random.randrange(-(themeloader.block_size * 5), 0, 16)
 
     def update(self):
-        self.rect.y += themeloader.block_size
+        # self.rect.y += themeloader.block_size
+        self.rect.y += 1
 
         if self.rect.y > (themeloader.block_size * 12):
             # self.rect.y = -16
